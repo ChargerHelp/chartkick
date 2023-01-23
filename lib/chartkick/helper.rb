@@ -115,13 +115,20 @@ module Chartkick
           (function() {
             if (document.documentElement.hasAttribute("data-turbolinks-preview")) return;
             if (document.documentElement.hasAttribute("data-turbo-preview")) return;
-
+          
             var createChart = function() { #{createjs} };
+            
+            
             if ("Chartkick" in window) {
               createChart();
             } else {
               window.addEventListener("chartkick:load", createChart, true);
             }
+       
+            if ("Turbo" in window) {
+              window.addEventListener("turbo:render", createChart, true);
+            }
+
           })();
         </script>
       JS
